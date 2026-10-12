@@ -1,0 +1,19 @@
+node_modules
+dist
+.venv
+.env
+.env.local
+.DS_Store
+*.tsbuildinfo
+__pycache__
+.pytest_cache
+*.pyc
+
+# Downloads that are not ours to redistribute, or are just large.
+data/raw
+data/real
+data/photos
+data/uploads
+ml/photo/runs
+ml/roughness/runs
+web/test-results
