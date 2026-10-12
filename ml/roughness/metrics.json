@@ -1,0 +1,814 @@
+{
+ "note": "Every number here was computed by running the exported ONNX model. 'simulated' sets are SYNTHETIC.",
+ "classes": [
+  "smooth",
+  "rough",
+  "bump"
+ ],
+ "features": [
+  "v_rms",
+  "v_p2p",
+  "v_maxabs",
+  "v_crest",
+  "v_kurtosis",
+  "h_rms",
+  "jerk_rms",
+  "jerk_max",
+  "band_0p5_3",
+  "band_3_8",
+  "band_8_15",
+  "band_15_25",
+  "hf_ratio",
+  "dom_freq",
+  "centroid",
+  "gyro_rms",
+  "gyro_max",
+  "zcr",
+  "burst_ratio",
+  "top5_energy",
+  "step_regularity",
+  "rel_v_rms",
+  "rel_jerk_rms",
+  "rel_hf",
+  "prev_v_rms",
+  "prev_v_maxabs",
+  "prev_jerk_rms",
+  "prev_burst_ratio",
+  "prev_band_8_15",
+  "prev_band_15_25",
+  "next_v_rms",
+  "next_v_maxabs",
+  "next_jerk_rms",
+  "next_burst_ratio",
+  "next_band_8_15",
+  "next_band_15_25"
+ ],
+ "params": {
+  "n_estimators": 220,
+  "max_depth": 3,
+  "learning_rate": 0.08,
+  "subsample": 0.8,
+  "random_state": 7
+ },
+ "class_weighting": {
+  "chosen": "none",
+  "validation_macro_f1": {
+   "none": 0.8679,
+   "sqrt": 0.8658,
+   "balanced": 0.8554
+  }
+ },
+ "training_windows": {
+  "simulated": 12600,
+  "real_luo2020_participants_1_to_20": 4890
+ },
+ "sim_only_model": {
+  "simulated_heldout": {
+   "n": 3600,
+   "macro_f1": 0.8456,
+   "accuracy": 0.8783,
+   "per_class": {
+    "smooth": {
+     "precision": 0.9165,
+     "recall": 0.9359,
+     "f1": 0.9261,
+     "support": 1982
+    },
+    "rough": {
+     "precision": 0.8341,
+     "recall": 0.8439,
+     "f1": 0.839,
+     "support": 1102
+    },
+    "bump": {
+     "precision": 0.8178,
+     "recall": 0.7306,
+     "f1": 0.7718,
+     "support": 516
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     1855,
+     90,
+     37
+    ],
+    [
+     125,
+     930,
+     47
+    ],
+    [
+     44,
+     95,
+     377
+    ]
+   ],
+   "by_mode": {
+    "walking": {
+     "n": 1800,
+     "macro_f1": 0.802,
+     "accuracy": 0.8328,
+     "per_class": {
+      "smooth": {
+       "precision": 0.8816,
+       "recall": 0.8915,
+       "f1": 0.8865,
+       "support": 986
+      },
+      "rough": {
+       "precision": 0.7617,
+       "recall": 0.7949,
+       "f1": 0.778,
+       "support": 551
+      },
+      "bump": {
+       "precision": 0.7982,
+       "recall": 0.692,
+       "f1": 0.7413,
+       "support": 263
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       879,
+       82,
+       25
+      ],
+      [
+       92,
+       438,
+       21
+      ],
+      [
+       26,
+       55,
+       182
+      ]
+     ]
+    },
+    "rolling": {
+     "n": 1800,
+     "macro_f1": 0.8898,
+     "accuracy": 0.9239,
+     "per_class": {
+      "smooth": {
+       "precision": 0.9503,
+       "recall": 0.9799,
+       "f1": 0.9649,
+       "support": 996
+      },
+      "rough": {
+       "precision": 0.9111,
+       "recall": 0.8929,
+       "f1": 0.9019,
+       "support": 551
+      },
+      "bump": {
+       "precision": 0.8369,
+       "recall": 0.7708,
+       "f1": 0.8025,
+       "support": 253
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       976,
+       8,
+       12
+      ],
+      [
+       33,
+       492,
+       26
+      ],
+      [
+       18,
+       40,
+       195
+      ]
+     ]
+    }
+   },
+   "by_placement": {
+    "trunk": {
+     "macro_f1": 0.8018,
+     "n": 810
+    },
+    "pocket": {
+     "macro_f1": 0.8162,
+     "n": 180
+    },
+    "hand": {
+     "macro_f1": 0.8164,
+     "n": 360
+    },
+    "bag": {
+     "macro_f1": 0.7846,
+     "n": 450
+    },
+    "mount": {
+     "macro_f1": 0.8853,
+     "n": 900
+    },
+    "lap": {
+     "macro_f1": 0.8944,
+     "n": 900
+    }
+   }
+  },
+  "simulated_heldout_shifted": {
+   "n": 3600,
+   "macro_f1": 0.8321,
+   "accuracy": 0.8622,
+   "per_class": {
+    "smooth": {
+     "precision": 0.917,
+     "recall": 0.9086,
+     "f1": 0.9128,
+     "support": 1958
+    },
+    "rough": {
+     "precision": 0.7915,
+     "recall": 0.8464,
+     "f1": 0.818,
+     "support": 1126
+    },
+    "bump": {
+     "precision": 0.8158,
+     "recall": 0.7209,
+     "f1": 0.7654,
+     "support": 516
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     1779,
+     156,
+     23
+    ],
+    [
+     112,
+     953,
+     61
+    ],
+    [
+     49,
+     95,
+     372
+    ]
+   ],
+   "by_mode": {
+    "walking": {
+     "n": 1890,
+     "macro_f1": 0.7806,
+     "accuracy": 0.8095,
+     "per_class": {
+      "smooth": {
+       "precision": 0.8921,
+       "recall": 0.8488,
+       "f1": 0.8699,
+       "support": 1032
+      },
+      "rough": {
+       "precision": 0.7092,
+       "recall": 0.7907,
+       "f1": 0.7478,
+       "support": 583
+      },
+      "bump": {
+       "precision": 0.7481,
+       "recall": 0.7018,
+       "f1": 0.7242,
+       "support": 275
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       876,
+       140,
+       16
+      ],
+      [
+       73,
+       461,
+       49
+      ],
+      [
+       33,
+       49,
+       193
+      ]
+     ]
+    },
+    "rolling": {
+     "n": 1710,
+     "macro_f1": 0.8904,
+     "accuracy": 0.9205,
+     "per_class": {
+      "smooth": {
+       "precision": 0.9426,
+       "recall": 0.9752,
+       "f1": 0.9586,
+       "support": 926
+      },
+      "rough": {
+       "precision": 0.8881,
+       "recall": 0.9061,
+       "f1": 0.897,
+       "support": 543
+      },
+      "bump": {
+       "precision": 0.904,
+       "recall": 0.7427,
+       "f1": 0.8155,
+       "support": 241
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       903,
+       16,
+       7
+      ],
+      [
+       39,
+       492,
+       12
+      ],
+      [
+       16,
+       46,
+       179
+      ]
+     ]
+    }
+   },
+   "by_placement": {
+    "trunk": {
+     "macro_f1": 0.7986,
+     "n": 720
+    },
+    "pocket": {
+     "macro_f1": 0.7495,
+     "n": 540
+    },
+    "hand": {
+     "macro_f1": 0.7997,
+     "n": 450
+    },
+    "bag": {
+     "macro_f1": 0.7436,
+     "n": 180
+    },
+    "mount": {
+     "macro_f1": 0.8896,
+     "n": 630
+    },
+    "lap": {
+     "macro_f1": 0.8907,
+     "n": 1080
+    }
+   }
+  },
+  "real_luo2020_participants_21_to_30": {
+   "n": 2496,
+   "macro_f1": 0.6281,
+   "accuracy": 0.6226,
+   "per_class": {
+    "smooth": {
+     "precision": 0.627,
+     "recall": 0.5455,
+     "f1": 0.5835,
+     "support": 1131
+    },
+    "rough": {
+     "precision": 0.6594,
+     "recall": 0.6864,
+     "f1": 0.6726,
+     "support": 1365
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     617,
+     484,
+     30
+    ],
+    [
+     367,
+     937,
+     61
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "predicted_bump_fraction": 0.0365,
+   "by_sensor": {
+    "trunk": 0.6634,
+    "wrist": 0.6015,
+    "thigh": 0.5883
+   }
+  }
+ },
+ "shipped_model": {
+  "trained_on": "simulated walks plus real Luo 2020 participants 1 to 20",
+  "simulated_heldout": {
+   "n": 3600,
+   "macro_f1": 0.8329,
+   "accuracy": 0.8694,
+   "per_class": {
+    "smooth": {
+     "precision": 0.9133,
+     "recall": 0.9349,
+     "f1": 0.924,
+     "support": 1982
+    },
+    "rough": {
+     "precision": 0.8139,
+     "recall": 0.8294,
+     "f1": 0.8216,
+     "support": 1102
+    },
+    "bump": {
+     "precision": 0.8103,
+     "recall": 0.7035,
+     "f1": 0.7531,
+     "support": 516
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     1853,
+     95,
+     34
+    ],
+    [
+     137,
+     914,
+     51
+    ],
+    [
+     39,
+     114,
+     363
+    ]
+   ],
+   "by_mode": {
+    "walking": {
+     "n": 1800,
+     "macro_f1": 0.7864,
+     "accuracy": 0.8222,
+     "per_class": {
+      "smooth": {
+       "precision": 0.8756,
+       "recall": 0.8925,
+       "f1": 0.884,
+       "support": 986
+      },
+      "rough": {
+       "precision": 0.7302,
+       "recall": 0.7858,
+       "f1": 0.757,
+       "support": 551
+      },
+      "bump": {
+       "precision": 0.8267,
+       "recall": 0.635,
+       "f1": 0.7183,
+       "support": 263
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       880,
+       88,
+       18
+      ],
+      [
+       101,
+       433,
+       17
+      ],
+      [
+       24,
+       72,
+       167
+      ]
+     ]
+    },
+    "rolling": {
+     "n": 1800,
+     "macro_f1": 0.8796,
+     "accuracy": 0.9167,
+     "per_class": {
+      "smooth": {
+       "precision": 0.9502,
+       "recall": 0.9769,
+       "f1": 0.9634,
+       "support": 996
+      },
+      "rough": {
+       "precision": 0.9075,
+       "recall": 0.873,
+       "f1": 0.8899,
+       "support": 551
+      },
+      "bump": {
+       "precision": 0.7967,
+       "recall": 0.7747,
+       "f1": 0.7856,
+       "support": 253
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       973,
+       7,
+       16
+      ],
+      [
+       36,
+       481,
+       34
+      ],
+      [
+       15,
+       42,
+       196
+      ]
+     ]
+    }
+   },
+   "by_placement": {
+    "trunk": {
+     "macro_f1": 0.8021,
+     "n": 810
+    },
+    "pocket": {
+     "macro_f1": 0.7728,
+     "n": 180
+    },
+    "hand": {
+     "macro_f1": 0.7794,
+     "n": 360
+    },
+    "bag": {
+     "macro_f1": 0.7641,
+     "n": 450
+    },
+    "mount": {
+     "macro_f1": 0.8617,
+     "n": 900
+    },
+    "lap": {
+     "macro_f1": 0.898,
+     "n": 900
+    }
+   }
+  },
+  "simulated_heldout_shifted": {
+   "n": 3600,
+   "macro_f1": 0.8293,
+   "accuracy": 0.8603,
+   "per_class": {
+    "smooth": {
+     "precision": 0.9132,
+     "recall": 0.9081,
+     "f1": 0.9106,
+     "support": 1958
+    },
+    "rough": {
+     "precision": 0.7826,
+     "recall": 0.8535,
+     "f1": 0.8165,
+     "support": 1126
+    },
+    "bump": {
+     "precision": 0.8424,
+     "recall": 0.6938,
+     "f1": 0.7609,
+     "support": 516
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     1778,
+     162,
+     18
+    ],
+    [
+     116,
+     961,
+     49
+    ],
+    [
+     53,
+     105,
+     358
+    ]
+   ],
+   "by_mode": {
+    "walking": {
+     "n": 1890,
+     "macro_f1": 0.779,
+     "accuracy": 0.8106,
+     "per_class": {
+      "smooth": {
+       "precision": 0.8897,
+       "recall": 0.8517,
+       "f1": 0.8703,
+       "support": 1032
+      },
+      "rough": {
+       "precision": 0.7006,
+       "recall": 0.8148,
+       "f1": 0.7534,
+       "support": 583
+      },
+      "bump": {
+       "precision": 0.7946,
+       "recall": 0.6473,
+       "f1": 0.7134,
+       "support": 275
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       879,
+       143,
+       10
+      ],
+      [
+       72,
+       475,
+       36
+      ],
+      [
+       37,
+       60,
+       178
+      ]
+     ]
+    },
+    "rolling": {
+     "n": 1710,
+     "macro_f1": 0.8859,
+     "accuracy": 0.9152,
+     "per_class": {
+      "smooth": {
+       "precision": 0.9374,
+       "recall": 0.9708,
+       "f1": 0.9538,
+       "support": 926
+      },
+      "rough": {
+       "precision": 0.8836,
+       "recall": 0.895,
+       "f1": 0.8893,
+       "support": 543
+      },
+      "bump": {
+       "precision": 0.8955,
+       "recall": 0.7469,
+       "f1": 0.8145,
+       "support": 241
+      }
+     },
+     "confusion_rows_true_cols_pred": [
+      [
+       899,
+       19,
+       8
+      ],
+      [
+       44,
+       486,
+       13
+      ],
+      [
+       16,
+       45,
+       180
+      ]
+     ]
+    }
+   },
+   "by_placement": {
+    "trunk": {
+     "macro_f1": 0.8122,
+     "n": 720
+    },
+    "pocket": {
+     "macro_f1": 0.7476,
+     "n": 540
+    },
+    "hand": {
+     "macro_f1": 0.7707,
+     "n": 450
+    },
+    "bag": {
+     "macro_f1": 0.7569,
+     "n": 180
+    },
+    "mount": {
+     "macro_f1": 0.8998,
+     "n": 630
+    },
+    "lap": {
+     "macro_f1": 0.8782,
+     "n": 1080
+    }
+   }
+  },
+  "real_luo2020_participants_21_to_30": {
+   "n": 2496,
+   "macro_f1": 0.7119,
+   "accuracy": 0.7143,
+   "per_class": {
+    "smooth": {
+     "precision": 0.6891,
+     "recall": 0.6782,
+     "f1": 0.6836,
+     "support": 1131
+    },
+    "rough": {
+     "precision": 0.7362,
+     "recall": 0.7443,
+     "f1": 0.7403,
+     "support": 1365
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     767,
+     364,
+     0
+    ],
+    [
+     346,
+     1016,
+     3
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "predicted_bump_fraction": 0.0012,
+   "by_sensor": {
+    "trunk": 0.7425,
+    "wrist": 0.6833,
+    "thigh": 0.7019
+   }
+  }
+ },
+ "real_only_model_two_classes": {
+  "real_luo2020_participants_21_to_30": {
+   "n": 2496,
+   "macro_f1": 0.7326,
+   "accuracy": 0.7336,
+   "per_class": {
+    "smooth": {
+     "precision": 0.6919,
+     "recall": 0.7427,
+     "f1": 0.7164,
+     "support": 1131
+    },
+    "rough": {
+     "precision": 0.773,
+     "recall": 0.726,
+     "f1": 0.7488,
+     "support": 1365
+    }
+   },
+   "confusion_rows_true_cols_pred": [
+    [
+     840,
+     291,
+     0
+    ],
+    [
+     374,
+     991,
+     0
+    ],
+    [
+     0,
+     0,
+     0
+    ]
+   ],
+   "predicted_bump_fraction": 0.0,
+   "by_sensor": {
+    "trunk": 0.7836,
+    "wrist": 0.6816,
+    "thigh": 0.7279
+   }
+  }
+ }
+}
