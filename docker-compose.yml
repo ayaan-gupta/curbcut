@@ -1,0 +1,52 @@
+# One command: docker compose up --build
+# Web on 4109, API on 8109, PostGIS on 5509 (host side). All three are overridable.
+services:
+  db:
+    image: ${POSTGIS_IMAGE:-imresamu/postgis:17-3.5}
+    environment:
+      POSTGRES_USER: curbcut
+      POSTGRES_PASSWORD: ${CURBCUT_DB_PASSWORD:-curbcut}
+      POSTGRES_DB: curbcut
+    ports:
+      - "${CURBCUT_DB_PORT:-5509}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U curbcut -d curbcut"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    volumes:
+      - db:/var/lib/postgresql/data
+
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    environment:
+      CURBCUT_DATABASE_URL: postgresql://curbcut:${CURBCUT_DB_PASSWORD:-curbcut}@db:5432/curbcut
+      CURBCUT_SEED_DEMO: ${CURBCUT_SEED_DEMO:-true}
+      CURBCUT_REVIEWER_TOKEN: ${CURBCUT_REVIEWER_TOKEN:-}
+      CURBCUT_DEVICE_SALT: ${CURBCUT_DEVICE_SALT:-curbcut-dev-salt}
+      CURBCUT_CORS_ORIGINS: http://localhost:${CURBCUT_WEB_PORT:-4109},http://127.0.0.1:${CURBCUT_WEB_PORT:-4109}
+      CURBCUT_UPLOAD_DIR: /data/uploads
+    ports:
+      - "${CURBCUT_API_PORT:-8109}:8109"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - uploads:/data/uploads
+
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+      args:
+        VITE_MAP_STYLE_URL: ${VITE_MAP_STYLE_URL:-https://tiles.openfreemap.org/styles/positron}
+    ports:
+      - "${CURBCUT_WEB_PORT:-4109}:80"
+    depends_on:
+      - api
+
+volumes:
+  db:
+  uploads:
