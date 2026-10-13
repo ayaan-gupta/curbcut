@@ -1,0 +1,1 @@
+{"image": "web/public/samples/curb-cut.jpg", "classes": ["present", "missing", "damaged", "blocked"], "probs": [0.87643, 0.06196, 0.05399, 0.00761]}

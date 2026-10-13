@@ -35,6 +35,7 @@ class ReportIn(BaseModel):
     value: float | None = Field(default=None, description="Incline in percent for slope reports, peak vertical acceleration for bumps.")
     material: str | None = None
     recorded_at: datetime | None = Field(default=None, description="When the phone observed it. Clamped to the last 24 hours. Rate limits use the time of receipt instead.")
+    simulated: bool = Field(default=False, description="True when the app's simulated sensor feed or a bundled sample photo produced this. Stored as synthetic.")
     faces_blurred: int = Field(default=0, ge=0)
     regions_blurred: int = Field(default=0, ge=0)
 

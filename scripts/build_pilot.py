@@ -273,11 +273,14 @@ def build(refresh: bool) -> dict[str, Any]:
         for wy in walk_ways
         if wy["id"] in kept_way_ids
     }
+    # Nodes an export might retag: anything already tagged, and both ends of every
+    # crossing, where a kerb tag would go even if there is none yet.
+    crossing_ends = {nid for ed in kept if edge_kind(ed["tags"]) == "crossing" for nid in (ed["nds"][0], ed["nds"][-1])}
     osm_nodes = {}
     for nid in used_nodes:
         node = nodes[nid]
         tags = node.get("tags", {})
-        if any(k in KEEP_NODE_TAGS for k in tags):
+        if any(k in KEEP_NODE_TAGS for k in tags) or nid in crossing_ends:
             osm_nodes[str(nid)] = {"version": node["version"], "lon": round(node["lon"], 7), "lat": round(node["lat"], 7), "tags": tags}
 
     # Context for the offline basemap: roads, buildings, parks, water.

@@ -1,0 +1,225 @@
+{
+ "note": "Test photos are real Wikimedia Commons photos only. Labels were assigned by the build agent (an AI model), not verified by a person. Synthetic images appear in training only.",
+ "classes": [
+  "present",
+  "missing",
+  "damaged",
+  "blocked"
+ ],
+ "split_by": "author plus Commons category, so a photographer's series stays on one side",
+ "real_photo_counts": {
+  "train": {
+   "present": 45,
+   "missing": 19,
+   "damaged": 24,
+   "blocked": 31
+  },
+  "val": {
+   "present": 2,
+   "missing": 12,
+   "damaged": 3,
+   "blocked": 10
+  },
+  "test": {
+   "present": 14,
+   "missing": 17,
+   "damaged": 11,
+   "blocked": 38
+  }
+ },
+ "synthetic_training_images_per_class": 300,
+ "target_accuracy": 0.85,
+ "shipped_variant": "real+synthetic",
+ "shipped_selection": "best validation accuracy among the variants trained on real photos",
+ "variants": {
+  "real": {
+   "train_images": 119,
+   "validation_accuracy": 0.7778,
+   "test": {
+    "n": 80,
+    "accuracy": 0.7375,
+    "accuracy_95ci_wilson": [
+     0.6318,
+     0.8214
+    ],
+    "balanced_accuracy": 0.6642,
+    "majority_class_baseline": 0.475,
+    "per_class": {
+     "present": {
+      "support": 14,
+      "recall": 0.9286,
+      "precision": 0.4483
+     },
+     "missing": {
+      "support": 17,
+      "recall": 0.2353,
+      "precision": 0.5714
+     },
+     "damaged": {
+      "support": 11,
+      "recall": 0.5455,
+      "precision": 0.8571
+     },
+     "blocked": {
+      "support": 38,
+      "recall": 0.9474,
+      "precision": 0.973
+     }
+    },
+    "confusion_rows_true_cols_pred": [
+     [
+      13,
+      1,
+      0,
+      0
+     ],
+     [
+      12,
+      4,
+      1,
+      0
+     ],
+     [
+      2,
+      2,
+      6,
+      1
+     ],
+     [
+      2,
+      0,
+      0,
+      36
+     ]
+    ],
+    "meets_target": false
+   }
+  },
+  "real+synthetic": {
+   "train_images": 1319,
+   "validation_accuracy": 0.8148,
+   "test": {
+    "n": 80,
+    "accuracy": 0.7,
+    "accuracy_95ci_wilson": [
+     0.5923,
+     0.7894
+    ],
+    "balanced_accuracy": 0.6057,
+    "majority_class_baseline": 0.475,
+    "per_class": {
+     "present": {
+      "support": 14,
+      "recall": 0.7857,
+      "precision": 0.4583
+     },
+     "missing": {
+      "support": 17,
+      "recall": 0.2353,
+      "precision": 0.5
+     },
+     "damaged": {
+      "support": 11,
+      "recall": 0.4545,
+      "precision": 0.625
+     },
+     "blocked": {
+      "support": 38,
+      "recall": 0.9474,
+      "precision": 0.9
+     }
+    },
+    "confusion_rows_true_cols_pred": [
+     [
+      11,
+      1,
+      0,
+      2
+     ],
+     [
+      9,
+      4,
+      3,
+      1
+     ],
+     [
+      2,
+      3,
+      5,
+      1
+     ],
+     [
+      2,
+      0,
+      0,
+      36
+     ]
+    ],
+    "meets_target": false
+   }
+  },
+  "synthetic": {
+   "train_images": 1200,
+   "validation_accuracy": 0.6296,
+   "test": {
+    "n": 80,
+    "accuracy": 0.225,
+    "accuracy_95ci_wilson": [
+     0.1473,
+     0.3279
+    ],
+    "balanced_accuracy": 0.2833,
+    "majority_class_baseline": 0.475,
+    "per_class": {
+     "present": {
+      "support": 14,
+      "recall": 0.0714,
+      "precision": 0.5
+     },
+     "missing": {
+      "support": 17,
+      "recall": 0.1765,
+      "precision": 0.5
+     },
+     "damaged": {
+      "support": 11,
+      "recall": 0.7273,
+      "precision": 0.1356
+     },
+     "blocked": {
+      "support": 38,
+      "recall": 0.1579,
+      "precision": 0.4615
+     }
+    },
+    "confusion_rows_true_cols_pred": [
+     [
+      1,
+      2,
+      9,
+      2
+     ],
+     [
+      1,
+      3,
+      10,
+      3
+     ],
+     [
+      0,
+      1,
+      8,
+      2
+     ],
+     [
+      0,
+      0,
+      32,
+      6
+     ]
+    ],
+    "meets_target": false
+   }
+  }
+ }
+}

@@ -58,7 +58,7 @@ class Service:
                     received_at=now,
                     status=screening.status,  # type: ignore[arg-type]
                     flags=screening.flags,
-                    synthetic=synthetic,
+                    synthetic=synthetic or report_in.simulated,
                 )
             )
             if report.status == "rejected":

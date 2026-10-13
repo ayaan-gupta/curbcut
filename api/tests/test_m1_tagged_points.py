@@ -94,3 +94,10 @@ def test_the_pilot_area_serves_a_basemap_and_a_network(client: TestClient) -> No
     network = client.get("/api/network", params={"profile": "manual_wheelchair"}).json()
     codes = {f["properties"]["code"] for f in network["features"]}
     assert len(network["features"]) == 991 and {"ok", "steps", "slope", "no_curb_cut"} <= codes
+
+
+def test_points_from_the_simulated_feed_are_stored_as_synthetic(client: TestClient) -> None:
+    body = {"category": "surface", "state": "bump", "source": "sensor", "simulated": True, **KERB}
+    assert post(client, body, DEVICE_A).status_code == 200
+    props = client.get("/api/features", params={"include": "all"}).json()["features"][0]["properties"]
+    assert props["synthetic"] is True

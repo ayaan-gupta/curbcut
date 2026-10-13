@@ -1,0 +1,17 @@
+{
+ "classes": [
+  "present",
+  "missing",
+  "damaged",
+  "blocked"
+ ],
+ "input": [
+  1,
+  3,
+  224,
+  224
+ ],
+ "range": "RGB 0..255",
+ "variant": "real+synthetic",
+ "base": "torchvision MobileNetV3-Small, ImageNet1K_V1 weights (BSD-3-Clause)"
+}
