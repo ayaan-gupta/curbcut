@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Curbcut draft. Not uploaded anywhere. Open in JOSM, verify every element, then upload under your own account if you agree. -->
+<!-- SYNTHETIC DEMO DATA. These edits come from seeded demo reports, not from real observations. DO NOT UPLOAD. -->
+<osmChange version="0.6" generator="Curbcut draft (SYNTHETIC DEMO, DO NOT UPLOAD)">
+  <modify>
+    <node id="7083429604" version="2" lat="47.6153571" lon="-122.3200002">
+      <tag k="barrier" v="kerb"/>
+      <tag k="kerb" v="raised"/>
+      <tag k="tactile_paving" v="yes"/>
+    </node>
+  </modify>
+</osmChange>

@@ -7,7 +7,7 @@ file is labelled synthetic (the filename starts with "synthetic_" and it
 lives under data/photos/synthetic), and none is ever counted in evaluation
 (evaluate.py refuses any path that is not a real manifest photo).
 
-    .venv/bin/python -m ml.photo.render_synth --count 400 --sheet docs/synthetic-samples.png
+    .venv/bin/python -m ml.photo.render_synth --count 400 --sheet docs/synthetic-samples.jpg
 
 What a scene contains: a road and a sidewalk meeting along a tilted curb line,
 then one of four things at that edge.
