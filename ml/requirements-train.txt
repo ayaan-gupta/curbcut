@@ -1,0 +1,4 @@
+# Only for retraining the photo classifier (python -m ml.photo.train). Not needed to run or test the app.
+-r ../requirements-dev.txt
+torch>=2.4
+torchvision>=0.19

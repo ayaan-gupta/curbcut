@@ -1,0 +1,10 @@
+.git
+.venv
+**/node_modules
+**/dist
+data/raw
+data/real
+data/photos
+data/uploads
+ml/photo/runs
+docs

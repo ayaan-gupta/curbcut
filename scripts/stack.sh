@@ -6,6 +6,7 @@
 #   scripts/stack.sh logs   follow the API log
 set -euo pipefail
 cd "$(dirname "$0")/.."
+if [ -f .env ]; then set -a; . ./.env; set +a; fi
 
 WEB_PORT="${CURBCUT_WEB_PORT:-4109}"
 API_PORT="${CURBCUT_API_PORT:-8109}"
@@ -31,7 +32,7 @@ start_db() {
   port_free "$DB_PORT" CURBCUT_DB_PORT
   docker run -d --name curbcut-db --network "$NET" \
     -e POSTGRES_USER=curbcut -e POSTGRES_PASSWORD="$DB_PASSWORD" -e POSTGRES_DB=curbcut \
-    -p "$DB_PORT:5432" -v curbcut-db:/var/lib/postgresql/data "$POSTGIS_IMAGE" >/dev/null
+    -p "127.0.0.1:$DB_PORT:5432" -v curbcut-db:/var/lib/postgresql/data "$POSTGIS_IMAGE" >/dev/null
   printf 'waiting for PostGIS'
   for _ in $(seq 1 60); do
     if docker exec curbcut-db pg_isready -U curbcut -d curbcut >/dev/null 2>&1 &&
@@ -62,8 +63,8 @@ case "${1:-up}" in
       -e CURBCUT_DEVICE_SALT="${CURBCUT_DEVICE_SALT:-curbcut-dev-salt}" \
       -e CURBCUT_CORS_ORIGINS="http://localhost:$WEB_PORT,http://127.0.0.1:$WEB_PORT" \
       -e CURBCUT_UPLOAD_DIR=/data/uploads \
-      -p "$API_PORT:8109" -v curbcut-uploads:/data/uploads curbcut-api >/dev/null
-    docker run -d --name curbcut-web --network "$NET" -p "$WEB_PORT:80" curbcut-web >/dev/null
+      -p "127.0.0.1:$API_PORT:8109" -v curbcut-uploads:/data/uploads curbcut-api >/dev/null
+    docker run -d --name curbcut-web --network "$NET" -p "127.0.0.1:$WEB_PORT:80" curbcut-web >/dev/null
     printf 'waiting for the API'
     for _ in $(seq 1 60); do
       if curl -fsS "http://localhost:$API_PORT/api/health" >/dev/null 2>&1; then echo ' ready'; break; fi

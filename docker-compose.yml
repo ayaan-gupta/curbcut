@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: ${CURBCUT_DB_PASSWORD:-curbcut}
       POSTGRES_DB: curbcut
     ports:
-      - "${CURBCUT_DB_PORT:-5509}:5432"
+      - "127.0.0.1:${CURBCUT_DB_PORT:-5509}:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U curbcut -d curbcut"]
       interval: 3s
@@ -29,7 +29,7 @@ services:
       CURBCUT_CORS_ORIGINS: http://localhost:${CURBCUT_WEB_PORT:-4109},http://127.0.0.1:${CURBCUT_WEB_PORT:-4109}
       CURBCUT_UPLOAD_DIR: /data/uploads
     ports:
-      - "${CURBCUT_API_PORT:-8109}:8109"
+      - "127.0.0.1:${CURBCUT_API_PORT:-8109}:8109"
     depends_on:
       db:
         condition: service_healthy
@@ -43,7 +43,7 @@ services:
       args:
         VITE_MAP_STYLE_URL: ${VITE_MAP_STYLE_URL:-https://tiles.openfreemap.org/styles/positron}
     ports:
-      - "${CURBCUT_WEB_PORT:-4109}:80"
+      - "127.0.0.1:${CURBCUT_WEB_PORT:-4109}:80"
     depends_on:
       - api
 
